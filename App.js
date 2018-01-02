@@ -4,12 +4,13 @@
  * @flow
  */
 
-import React, { Component } from 'react';
+import React, { Component, } from 'react';
 import {
   Platform,
   StyleSheet,
   Text,
-  View
+  View,
+  NativeModules,
 } from 'react-native';
 
 const instructions = Platform.select({
@@ -20,7 +21,15 @@ const instructions = Platform.select({
 });
 
 export default class App extends Component<{}> {
+
+
   render() {
+    const { HelloWorld } = NativeModules;
+
+    HelloWorld
+      .add(5, 10)
+      .then(result => alert('result:' + result));
+
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
