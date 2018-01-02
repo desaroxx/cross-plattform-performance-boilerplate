@@ -26,13 +26,16 @@ $ sh ./run_djinni.sh
 
 ## Run iOS (Development)
 
-*Not available yet*.
-
 ### Prerequisites iOS
 
-*Not available yet*.
+Nothing to do. XCode is pretty smart :)
 
 ### Run iOS
+Open project in *XCode*:
+```bash
+$ open ./ios/ReactNativeWithCppBoilerplate.xcodeproj
+```
+In *XCode* click **Product > Run**.
 
 ## Run Android (Development)
 
