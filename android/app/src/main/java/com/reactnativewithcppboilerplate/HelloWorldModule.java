@@ -40,7 +40,6 @@ public class HelloWorldModule extends ReactContextBaseJavaModule {
     public void sayHello(Callback successCallback) {
         try {
             String message = cppApi.getHelloWorld();
-            System.out.println("[HelloWorldModule] sayHello(): message: " + message);
             successCallback.invoke(message);
         } catch (Exception e) {
             Toast.makeText(mContext, "Unable to fetch shared preference", Toast.LENGTH_LONG).show();
@@ -51,7 +50,6 @@ public class HelloWorldModule extends ReactContextBaseJavaModule {
     public void add(int a, int b, Promise promise) {
         try {
             int sum = cppApi.add(a, b);
-            System.out.println("[HelloWorldModule] add(): sum: " + new Integer(sum).toString());
             promise.resolve(sum);
         } catch (Exception e) {
             Toast.makeText(mContext, "Unable to fetch shared preference", Toast.LENGTH_LONG).show();

@@ -22,14 +22,29 @@ const instructions = Platform.select({
 
 export default class App extends Component<{}> {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      value1: 10,
+      value2: 5,
+      sum: 'Loading...',
+    };
+    this.calculateSum();
+  }
 
-  render() {
+  calculateSum = () => {
     const { HelloWorld } = NativeModules;
 
+    // Function "HelloWorld.add(...)" is implemented in c++
     HelloWorld
-      .add(5, 10)
-      .then(result => alert('result:' + result));
+      .add(this.state.value1, this.state.value2)
+      .then(sum => {
+        const newState = Object.assign({}, this.state, { sum });
+        this.setState(newState);
+      });
+  };
 
+  render() {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
@@ -40,6 +55,9 @@ export default class App extends Component<{}> {
         </Text>
         <Text style={styles.instructions}>
           {instructions}
+        </Text>
+        <Text style={styles.instructions}>
+          {this.state.value1} + {this.state.value2} = {this.state.sum}
         </Text>
       </View>
     );
